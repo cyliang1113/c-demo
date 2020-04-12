@@ -73,7 +73,10 @@ int main() {
     int num_13 = printf("return v\n");
     printf("num_13 = %d\n", num_13);
 
-
+    int age = 0;
+    printf("age = ");
+    scanf("%d", &age);
+    printf("age = %d\n", age);
     return 0;
 }
 
