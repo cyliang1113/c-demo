@@ -92,3 +92,9 @@ void input_demo_fun() {
     printf("age = %d\n", age);
 }
 
+void static_var_fun() {
+    static int age = 10;
+    printf("static int age = %d\n", age);
+    age++;
+}
+
