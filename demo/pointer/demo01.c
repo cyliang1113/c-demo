@@ -27,7 +27,7 @@ void pointer_def() {
 
 }
 
-void pointer_arr(){
+void arr_pointer(){
     long l_num = 111111;
     printf("l_num sizeof = %d\n", sizeof(l_num));
     int i_num = 22;
@@ -62,5 +62,37 @@ void pointer_arr(){
     p_str++;
     printf("*p_str1 = %c\n", *p_str);
 
+}
 
+/**
+ * 指向指针的指针
+ */
+void pointer_to_pointer(){
+    int num = 5;
+    int *p_num = &num;
+    int **pp_num = &p_num;
+
+    printf("int num = %d\n", num);
+    printf("&num = %x\n", &num);
+    printf("p_num = %x\n", p_num);
+    printf("&p_num = %x\n", &p_num);
+    printf("pp_num = %x\n", pp_num);
+
+    printf("*pp_num = %x\n", *pp_num);
+    printf("**pp_num = %x\n", **pp_num);
+
+}
+
+void pointer_arr(){
+    int num_1 = 11;
+    int num_2 = 22;
+    printf("&num_1 = %x\n", &num_1);
+    printf("&num_2 = %x\n", &num_2);
+
+    int *arr[2] = {&num_1, &num_2}; //数组里每个元素是指针
+
+    for (int i = 0; i < 2; i++) {
+        printf("arr[i] = %x\n", arr[i]);
+        printf("*arr[i] = %d\n", *arr[i]);
+    }
 }

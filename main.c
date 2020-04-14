@@ -12,5 +12,5 @@ int main() {
 //    malloc_1();
 //    struct_arr();
 //    static_var_fun();
-    fprintf(stderr, "Error");
+//    pointer_arr();
 }

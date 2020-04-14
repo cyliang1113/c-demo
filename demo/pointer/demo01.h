@@ -10,4 +10,9 @@
 void pointer_def();
 
 
+void arr_pointer();
+
+
+void pointer_to_pointer();
+
 void pointer_arr();
