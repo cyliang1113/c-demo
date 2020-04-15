@@ -16,3 +16,14 @@ void open_file_demo(){
     }
 }
 
+void write_file_demo(){
+    FILE *p_file = fopen("D:/zzz.txt", "w");
+    if (p_file != NULL) {
+        printf("p_file not null\n", p_file);
+        fprintf(p_file, "hello world");
+        fclose(p_file);
+    } else {
+        printf("p_file is null\n", p_file);
+    }
+}
+

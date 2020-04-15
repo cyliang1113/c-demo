@@ -16,5 +16,6 @@ int main() {
 //    pointer_arr();
 //    fun_pointer(fun_add, 4, 3);
 //    linked_list_demo();
-    open_file_demo();
+//    open_file_demo();
+    write_file_demo();
 }
