@@ -5,6 +5,9 @@
 #include <stdlib.h>
 #include "demo01.h"
 
+/**
+ * 指针定义
+ */
 void pointer_def() {
     printf("pointer def\n");
     int num_1 = 456;
@@ -30,6 +33,9 @@ void pointer_def() {
 
 }
 
+/**
+ * 数组指针, 指向数组的指针
+ */
 void arr_pointer(){
     long l_num = 111111;
     printf("l_num sizeof = %d\n", sizeof(l_num));
@@ -86,6 +92,9 @@ void pointer_to_pointer(){
 
 }
 
+/**
+ * 指针数组 数组里每个元素是指针
+ */
 void pointer_arr(){
     int num_1 = 11;
     int num_2 = 22;

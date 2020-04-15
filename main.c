@@ -3,7 +3,7 @@
 #include "demo/pointer/demo01.h"
 #include "demo/malloc/demo01.h"
 #include "demo/struct/demo01.h"
-
+#include "demo/file/demo01.h"
 
 
 int main() {
@@ -15,5 +15,6 @@ int main() {
 //    static_var_fun();
 //    pointer_arr();
 //    fun_pointer(fun_add, 4, 3);
-    linked_list_demo();
+//    linked_list_demo();
+    open_file_demo();
 }
