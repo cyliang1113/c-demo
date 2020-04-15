@@ -2,6 +2,9 @@
 // Created by Youliang.Chen on 2020/4/13.
 //
 #include <stdio.h>
+#include <stdlib.h>
+#include "demo01.h"
+
 void pointer_def() {
     printf("pointer def\n");
     int num_1 = 456;
@@ -94,5 +97,38 @@ void pointer_arr(){
     for (int i = 0; i < 2; i++) {
         printf("arr[i] = %x\n", arr[i]);
         printf("*arr[i] = %d\n", *arr[i]);
+    }
+}
+
+void fun_pointer(void (* p_fun_add)(), int a, int b){
+    p_fun_add(a, b);
+}
+
+void fun_add(int a, int b) {
+    printf("a + b = %d", a + b);
+}
+
+void linked_list_demo() {
+    lln head = {-1, NULL};
+    lln *p_node = &head;
+    for (int i = 0; i < 3; i++) {
+//        int j;
+//        struct linked_list_node node;
+//        printf("&node = %x\n", &node);
+//        printf("&j = %x\n", &j);
+        lln * p_node_1 = malloc(sizeof(lln));
+        p_node_1->name = i;
+        p_node_1->next = NULL;
+        p_node->next = p_node_1;
+        p_node = p_node_1;
+    }
+    p_node = head.next;
+    for (;;) {
+        if (p_node == NULL) {
+            break;
+        }
+        printf("node.name = %d, ", p_node->name);
+        printf("node.next = %x\n", p_node->next);
+        p_node = p_node->next;
     }
 }
