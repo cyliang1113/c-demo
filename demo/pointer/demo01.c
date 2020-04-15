@@ -112,11 +112,7 @@ void linked_list_demo() {
     lln head = {-1, NULL};
     lln *p_node = &head;
     for (int i = 0; i < 3; i++) {
-//        int j;
-//        struct linked_list_node node;
-//        printf("&node = %x\n", &node);
-//        printf("&j = %x\n", &j);
-        lln * p_node_1 = malloc(sizeof(lln));
+        lln *p_node_1 = malloc(sizeof(lln));
         p_node_1->name = i;
         p_node_1->next = NULL;
         p_node->next = p_node_1;
