@@ -12,3 +12,5 @@ void var_demo_fun();
 void input_demo_fun();
 
 void static_var_fun();
+
+void fun_args_arr();

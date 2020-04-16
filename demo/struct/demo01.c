@@ -35,7 +35,13 @@ void print(struct person pn) {
     pn.name = "Google";
 }
 
-void print_arg_p(struct person *p_pn) {
+void fun_args_struct(){
+    struct person p = {"name", 28};
+    printf("p addr = %x\n", &p);
+    print(p);
+}
+
+void fun_args_struct_pointer(struct person *p_pn) {
     printf("p_pn = %x\n", p_pn);
     printf("p_pn->name = %s\n", p_pn->name);
     printf("p_pn->age = %d\n", p_pn->age);
@@ -48,7 +54,7 @@ void struct_arr() {
         printf("arr[i] addr = %x\n", &arr[i]);
         struct person item = arr[i];
         printf("item addr = %x\n", &item);
-//        print_arg_p(&item);
+//        fun_args_struct_pointer(&item);
         print(item);
         printf("%s\n", item.name);
     }

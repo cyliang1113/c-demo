@@ -11,3 +11,5 @@
 void open_file_demo();
 
 void write_file_demo();
+
+void read_file_demo();

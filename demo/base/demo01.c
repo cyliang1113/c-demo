@@ -98,3 +98,16 @@ void static_var_fun() {
     age++;
 }
 
+void print_arr(int arr[]) {
+    printf("arr add = %x\n", arr);
+    printf("arr[0] = %d\n", arr[0]);
+    arr[0] = 99;
+}
+
+void fun_args_arr(){
+    int a[5] = {1, 2, 3};
+    printf("a add = %x\n", a);
+    print_arr(a);
+    printf("a[0] = %d\n", a[0]);
+}
+

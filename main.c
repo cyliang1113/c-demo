@@ -4,6 +4,7 @@
 #include "demo/malloc/demo01.h"
 #include "demo/struct/demo01.h"
 #include "demo/file/demo01.h"
+#include "demo/string/demo01.h"
 
 
 int main() {
@@ -17,5 +18,9 @@ int main() {
 //    fun_pointer(fun_add, 4, 3);
 //    linked_list_demo();
 //    open_file_demo();
-    write_file_demo();
+//    write_file_demo();
+//    string_cat();
+//    fun_args_struct();
+//    printf("eof = %d", EOF);
+    read_file_demo();
 }
