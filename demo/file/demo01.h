@@ -12,4 +12,8 @@ void open_file_demo();
 
 void write_file_demo();
 
-void read_file_demo();
+void file_gets_demo();
+
+void file_seek_demo();
+
+void file_read_demo();

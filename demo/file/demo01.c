@@ -28,16 +28,16 @@ void write_file_demo(){
     }
 }
 
-void read_file_demo() {
+void file_gets_demo() {
     FILE *p_file = fopen("D:/zzz.txt", "r");
     if (p_file == NULL) {
         printf("p_file is null\n", p_file);
         return;
     }
-    int buf_size = 5;
+    int buf_size = 50;
     char buf[buf_size];
-    int orig = 0;
-    int off = buf_size - 1;
+    printf("buf add = %x\n", &buf);
+
     rewind(p_file);
     for (;;) {
         char *gets_r = fgets(buf, buf_size, p_file);
@@ -45,12 +45,43 @@ void read_file_demo() {
             return;
         }
         printf("%s", buf);
-//        printf("%s", buf);
-        orig = orig + off;
-        int seek_r = fseek(p_file, orig, off);
-//        printf("%d\n", seek_r);
     }
     fflush(p_file);
     fclose(p_file);
+}
+
+void file_seek_demo(){
+    FILE *p_file = fopen("D:/zzz.txt", "r");
+    if (p_file == NULL) {
+        printf("p_file is null\n", p_file);
+        return;
+    }
+    fseek(p_file, 0, SEEK_CUR);
+    putchar(fgetc(p_file));
+
+    fseek(p_file, 0, SEEK_CUR);
+    putchar(fgetc(p_file));
+
+}
+
+void file_read_demo() {
+    FILE *p_file = fopen("D:/zzz.txt", "r");
+    if (p_file == NULL) {
+        printf("p_file is null\n", p_file);
+        return;
+    }
+    int buf_size = 5;
+    char buf[buf_size];
+    int r = fread(buf, sizeof(char), buf_size - 1, p_file);
+    printf("%d\n", r);
+    buf[r] = '\0';
+    printf("%s\n", buf);
+
+    r = fread(buf, sizeof(char), buf_size - 1, p_file);
+    printf("%d\n", r);
+    buf[r] = '\0';
+    printf("%s\n", buf);
+
+
 }
 

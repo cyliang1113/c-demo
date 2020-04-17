@@ -8,3 +8,5 @@
 #endif //C_BASE_DEMO_DEMO01_H
 
 void malloc_1();
+
+void calloc_1();

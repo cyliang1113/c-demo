@@ -22,5 +22,10 @@ int main() {
 //    string_cat();
 //    fun_args_struct();
 //    printf("eof = %d", EOF);
-    read_file_demo();
+//    file_gets_demo();
+//    calloc_1();
+//    file_seek_demo();
+    file_read_demo();
+
 }
+
