@@ -2,7 +2,7 @@
 // Created by Youliang.Chen on 2020/4/15.
 //
 
-#include "demo01.h"
+#include "file_demo01.h"
 
 void open_file_demo(){
     FILE *p_file = fopen("D:/zzz.txt", "r");
@@ -72,16 +72,13 @@ void file_read_demo() {
     }
     int buf_size = 5;
     char buf[buf_size];
-    int r = fread(buf, sizeof(char), buf_size - 1, p_file);
-    printf("%d\n", r);
-    buf[r] = '\0';
-    printf("%s\n", buf);
-
-    r = fread(buf, sizeof(char), buf_size - 1, p_file);
-    printf("%d\n", r);
-    buf[r] = '\0';
-    printf("%s\n", buf);
-
-
+    for (;;) {
+        int r = fread(buf, sizeof(char), buf_size - 1, p_file);
+        if (r == 0) {
+            break;
+        }
+        buf[r] = '\0';
+        printf("%s", buf);
+    }
 }
 

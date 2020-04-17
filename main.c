@@ -1,10 +1,14 @@
 #include <stdio.h>
-#include "demo/base/demo01.h"
-#include "demo/pointer/demo01.h"
-#include "demo/malloc/demo01.h"
+#include "demo/base/base_demo01.h"
+#include "demo/pointer/pointer_demo01.h"
+#include "demo/malloc/malloc_demo01.h"
 #include "demo/struct/demo01.h"
-#include "demo/file/demo01.h"
-#include "demo/string/demo01.h"
+
+#ifndef C_BASE_DEMO_FILE_DEMO01_H
+#include "demo/file/file_demo01.h"
+#endif
+
+#include "demo/string/string_demo01.h"
 
 
 int main() {
@@ -26,6 +30,5 @@ int main() {
 //    calloc_1();
 //    file_seek_demo();
     file_read_demo();
-
 }
 

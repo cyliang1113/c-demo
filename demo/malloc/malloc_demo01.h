@@ -2,8 +2,8 @@
 // Created by leon on 2020/4/13.
 //
 
-#ifndef C_BASE_DEMO_DEMO01_H
-#define C_BASE_DEMO_DEMO01_H
+#ifndef C_BASE_DEMO_MALLOC_DEMO01_H
+#define C_BASE_DEMO_MALLOC_DEMO01_H
 
 #endif //C_BASE_DEMO_DEMO01_H
 
