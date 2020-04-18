@@ -9,6 +9,7 @@
 #endif
 
 #include "demo/string/string_demo01.h"
+#include "demo/socket/socket_demo01.h"
 
 
 int main() {
@@ -29,6 +30,7 @@ int main() {
 //    file_gets_demo();
 //    calloc_1();
 //    file_seek_demo();
-    file_read_demo();
+//    file_read_demo();
+    tcp_server_socket();
 }
 
