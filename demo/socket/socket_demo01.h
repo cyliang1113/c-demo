@@ -9,3 +9,4 @@
 
 
 void tcp_server_socket();
+void tcp_server_socket2();
