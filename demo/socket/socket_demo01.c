@@ -66,36 +66,33 @@ void tcp_server_socket2(){
 
     int c_socket = accept(s_socket, (struct sockaddr *)NULL, NULL);
     printf("c_socket = %d\n", c_socket);
-    int lenLen = 4;
-    char datagramHead[lenLen];
-    int datagramLen;
-
-
-    int buff_len = 100;
-    char buff[buff_len];
-    char * datagramBody;
 
     for (;;) {
+        int lenLen = 4;
+        int buff_len = 100;
+        char buff[buff_len];
+        char * datagramBody;
+        //不考虑沾包问题
         int recv_len = recv(c_socket, buff, buff_len, 0);
-        datagramHead[0] = buff[0];
-        datagramHead[1] = buff[1];
-        datagramHead[2] = buff[2];
-        datagramHead[3] = buff[3];
-        printf("%b", datagramHead[0]);
-        printf("%b", datagramHead[1]);
-        printf("%b", datagramHead[2]);
-        printf("%b", datagramHead[3]);
-        memcpy(&datagramLen, datagramHead, sizeof(int));
-        int bodyLen = datagramLen - lenLen;
-        datagramBody = malloc(bodyLen);
-        for (int i = 0; i < recv_len; i++) {
-            datagramBody[i] = buff[4 + i];
+        if (recv_len > 0) {
+            int datagramHead0 = buff[0];
+            int datagramHead1 = buff[1];
+            int datagramHead2 = buff[2];
+            int datagramHead3 = buff[3];
+            int datagramLen = datagramHead0 << 24 | datagramHead1 << 16 | datagramHead2 << 8 | datagramHead3;
+            int bodyLen = datagramLen - lenLen;
+            datagramBody = malloc(bodyLen);
+            for (int i = 0; i < recv_len - lenLen; i++) {
+                datagramBody[i] = buff[lenLen + i];
+            }
+            printf("报长度: %d, 报文体长度: %d, 报文体: ", datagramLen, bodyLen);
+            for (int i = 0; i < bodyLen; i++) {
+                printf("%c", datagramBody[i]);
+            }
+            printf("\n");
+
         }
-        printf("报文头: %d, 报文体: ", *(int *) datagramHead);
-        for (int i = 0; i < bodyLen; i++) {
-            printf("%c", datagramBody[i]);
-        }
-        printf("\n");
-        return;
+
+        free(datagramBody);
     }
 }
