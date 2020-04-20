@@ -54,7 +54,7 @@ void tcp_server_socket2(){
 
     struct sockaddr_in s_addr;
     s_addr.sin_family = AF_INET;
-    s_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+//    s_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
     s_addr.sin_port = htons(8899);
 
     int bind_r = bind(s_socket, (struct sockaddr *)&s_addr, sizeof(s_addr));
