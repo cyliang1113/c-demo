@@ -121,7 +121,6 @@ void tcp_server_socket3(){
         printf("listen error\n");
     }
 
-    fd_set read_fd_set_2;
     fd_set read_fd_set;
     int fd_max = s_socket;
     struct timeval timeout;
@@ -132,7 +131,7 @@ void tcp_server_socket3(){
 
     while (1) {
 
-        read_fd_set_2 = read_fd_set;
+        fd_set read_fd_set_2 = read_fd_set;
         int select_r = select(fd_max + 1, &read_fd_set_2, 0, 0, &timeout);
 //        printf("select_r = %d\n", select_r);
         if (select_r == -1) {
@@ -142,8 +141,7 @@ void tcp_server_socket3(){
 //            printf("select 没有事件\n");
             continue;
         } else {
-            printf("-------------------->>>>>>>>>>>>>>>>>>>>>>>>\n");
-            printf("select_r = %d\n", select_r);
+            printf(">>>>>>>>>> 一次select, select_r = %d\n", select_r);
 
             int c_socket_arr_len = 100;
             int c_socket_arr[c_socket_arr_len];
@@ -151,23 +149,22 @@ void tcp_server_socket3(){
 
             for (int fd = 0; fd < fd_max + 1; fd++) {
                 if (FD_ISSET(fd, &read_fd_set_2)) {
-                    printf("select 事件 fd = %d\n", fd);
                     if (s_socket == fd) {
                         // server socket 事件
                         int c_socket = accept(fd, (struct sockaddr *)NULL, NULL);
-                        printf("有客户端接入 c_socket = %d\n", c_socket);
+                        printf("有客户端接入(c_socket = %d)\n", c_socket);
                         c_socket_arr[c_socket_arr_p++] = c_socket;
                     } else {
                         // client socket 事件
                         int buff_len = 100;
                         char buff[buff_len];
                         int read_r = read(fd, buff, buff_len);
-                        if (read_r == 0) {
+                        if (read_r == 0 || read_r == -1) {
                             FD_CLR(fd, &read_fd_set);
                             close(fd);
-                            printf("有客户端退出 c_socket = %d\n", fd);
+                            printf("有客户端退出(c_socket = %d)\n", fd);
                         } else {
-                            printf("接收到的数据: ");
+                            printf("接收到数据(c_socket = %d): ", fd);
                             for (int i = 0; i < read_r; i++) {
                                 printf("%c", buff[i]);
                             }
@@ -176,6 +173,7 @@ void tcp_server_socket3(){
                     }
                 }
             }
+            FD_ZERO(&read_fd_set_2);
             for(int i = 0; i < c_socket_arr_p; i++) {
                 FD_SET(c_socket_arr[i], &read_fd_set);
                 if (fd_max < c_socket_arr[i]) {
