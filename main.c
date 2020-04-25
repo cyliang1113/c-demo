@@ -11,6 +11,8 @@
 #include "demo/string/string_demo01.h"
 #include "demo/socket/socket_demo01.h"
 
+#include "leolib/leo_array.h"
+
 
 int main() {
 //    var_demo_fun();

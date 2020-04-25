@@ -51,7 +51,7 @@ void fun_args_struct_pointer(struct person *p_pn) {
 void struct_arr() {
     struct person arr[2] = {{"Tom", 25}, {"Jack", 28}};
     for (int i = 0; i < 1; i++) {
-        printf("arr[i] addr = %x\n", &arr[i]);
+        printf("items[i] addr = %x\n", &arr[i]);
         struct person item = arr[i];
         printf("item addr = %x\n", &item);
 //        fun_args_struct_pointer(&item);

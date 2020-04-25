@@ -99,8 +99,8 @@ void static_var_fun() {
 }
 
 void print_arr(int arr[]) {
-    printf("arr add = %x\n", arr);
-    printf("arr[0] = %d\n", arr[0]);
+    printf("items add = %x\n", arr);
+    printf("items[0] = %d\n", arr[0]);
     arr[0] = 99;
 }
 

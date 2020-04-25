@@ -45,11 +45,11 @@ void arr_pointer(){
     printf("f_num sizeof = %d\n", sizeof(f_num));
 
     int arr[] = {3, 9};
-    printf("arr[0] = %d\n", arr[0]);
-    printf("arr sizeof = %d\n", sizeof(arr));
-    printf("arr = %X\n", arr);
-    printf("&arr = %X\n", &arr);
-    printf("*arr = %d\n", *arr);
+    printf("items[0] = %d\n", arr[0]);
+    printf("items sizeof = %d\n", sizeof(arr));
+    printf("items = %X\n", arr);
+    printf("&items = %X\n", &arr);
+    printf("*items = %d\n", *arr);
 
     int *p_arr = arr;
     printf("p_arr = %X\n", p_arr);
@@ -62,7 +62,7 @@ void arr_pointer(){
     printf("p_arr1[0] = %d\n", p_arr1[0]);
     printf("p_arr1[1] = %d\n", p_arr1[1]);
 
-    printf("*arr = %d\n", *arr);
+    printf("*items = %d\n", *arr);
 
     char str[] = "xyz";
     printf("*str = %c\n", *str);
@@ -104,8 +104,8 @@ void pointer_arr(){
     int *arr[2] = {&num_1, &num_2}; //数组里每个元素是指针
 
     for (int i = 0; i < 2; i++) {
-        printf("arr[i] = %x\n", arr[i]);
-        printf("*arr[i] = %d\n", *arr[i]);
+        printf("items[i] = %x\n", arr[i]);
+        printf("*items[i] = %d\n", *arr[i]);
     }
 }
 

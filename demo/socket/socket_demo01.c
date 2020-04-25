@@ -3,6 +3,7 @@
 //
 
 #include "socket_demo01.h"
+#include "../../leolib/leo_array.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -121,48 +122,47 @@ void tcp_server_socket3(){
         printf("listen error\n");
     }
 
-    fd_set read_fd_set;
+    int read_fd_count = 0;
+    fd_set read_fd_set_buffer;
+    FD_ZERO(&read_fd_set_buffer);
+    FD_SET(s_socket, &read_fd_set_buffer);
+    read_fd_count++;
     int fd_max = s_socket;
+
     struct timeval timeout;
-    timeout.tv_sec = 0; //三秒
+    timeout.tv_sec =  0; //三秒
     timeout.tv_usec = 0;
-    FD_ZERO(&read_fd_set);
-    FD_SET(s_socket, &read_fd_set);
 
     while (1) {
+        fd_set read_fd_set = read_fd_set_buffer;
 
-        fd_set read_fd_set_2 = read_fd_set;
-        int select_r = select(fd_max + 1, &read_fd_set_2, 0, 0, &timeout);
+        int select_r = select(fd_max + 1, &read_fd_set, 0, 0, &timeout);
 //        printf("select_r = %d\n", select_r);
         if (select_r == -1) {
             printf("select 发生错误\n");
             break;
         } else if (select_r == 0) {
 //            printf("select 没有事件\n");
-            continue;
         } else {
             printf(">>>>>>>>>> 一次select, select_r = %d\n", select_r);
-
-            int c_socket_arr_len = 100;
-            int c_socket_arr[c_socket_arr_len];
-            int c_socket_arr_p = 0;
-
             for (int fd = 0; fd < fd_max + 1; fd++) {
-                if (FD_ISSET(fd, &read_fd_set_2)) {
+                if (FD_ISSET(fd, &read_fd_set)) {
                     if (s_socket == fd) {
                         // server socket 事件
                         int c_socket = accept(fd, (struct sockaddr *)NULL, NULL);
                         printf("有客户端接入(c_socket = %d)\n", c_socket);
-                        c_socket_arr[c_socket_arr_p++] = c_socket;
+                        FD_SET(c_socket, &read_fd_set_buffer);
+                        read_fd_count++;
                     } else {
                         // client socket 事件
                         int buff_len = 100;
                         char buff[buff_len];
                         int read_r = read(fd, buff, buff_len);
                         if (read_r == 0 || read_r == -1) {
-                            FD_CLR(fd, &read_fd_set);
                             close(fd);
                             printf("有客户端退出(c_socket = %d)\n", fd);
+                            FD_CLR(fd, &read_fd_set);
+                            read_fd_count--;
                         } else {
                             printf("接收到数据(c_socket = %d): ", fd);
                             for (int i = 0; i < read_r; i++) {
@@ -173,13 +173,38 @@ void tcp_server_socket3(){
                     }
                 }
             }
-            FD_ZERO(&read_fd_set_2);
-            for(int i = 0; i < c_socket_arr_p; i++) {
-                FD_SET(c_socket_arr[i], &read_fd_set);
-                if (fd_max < c_socket_arr[i]) {
-                    fd_max = c_socket_arr[i];
+
+        }
+        int bit_count = 0;
+        long int *bits = read_fd_set_buffer.__fds_bits;
+        for (int i = 0;; i++) {
+            long int item = bits[i];
+            int item_len = sizeof(long int);
+            for (int j = item_len - 1; j > 0; j--) {
+                item = item >> j;
+                int bit = item & 1;
+                if (bit) {
+                    bit_count++;
+                    fd_max = i * item_len + (item_len - j - 1);
+                    if (bit_count == read_fd_count) {
+                        break;
+                    }
                 }
             }
+            if (bit_count == read_fd_count) {
+                break;
+            }
         }
+//        read_fd_set_buffer
+//        FD_ZERO(&read_fd_set);
+//        FD_SET(s_socket, &read_fd_set);
+//        int fd_max = s_socket;
+//        for (int i = 0; i < listen_socket_arr_p->cur_p; i++) {
+//            FD_SET((listen_socket_arr_p->items)[i], &read_fd_set);
+//            if (fd_max < (listen_socket_arr_p->items)[i]) {
+//                fd_max = (listen_socket_arr_p->items)[i];
+//            }
+//        }
+//        leo_array_clean(listen_socket_arr_p);
     }
 }
