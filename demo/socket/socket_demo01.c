@@ -134,9 +134,11 @@ void tcp_server_socket3(){
     timeout.tv_usec = 0;
 
     while (1) {
+        fd_max = get_fd_max(read_fd_set_buffer, read_fd_count);
         fd_set read_fd_set = read_fd_set_buffer;
 
         int select_r = select(fd_max + 1, &read_fd_set, 0, 0, &timeout);
+
 //        printf("select_r = %d\n", select_r);
         if (select_r == -1) {
             printf("select 发生错误\n");
@@ -151,6 +153,8 @@ void tcp_server_socket3(){
                         // server socket 事件
                         int c_socket = accept(fd, (struct sockaddr *)NULL, NULL);
                         printf("有客户端接入(c_socket = %d)\n", c_socket);
+                        int bb = c_socket;
+                        send(c_socket, (void *)&bb, sizeof(bb), 0);
                         FD_SET(c_socket, &read_fd_set_buffer);
                         read_fd_count++;
                     } else {
@@ -161,7 +165,7 @@ void tcp_server_socket3(){
                         if (read_r == 0 || read_r == -1) {
                             close(fd);
                             printf("有客户端退出(c_socket = %d)\n", fd);
-                            FD_CLR(fd, &read_fd_set);
+                            FD_CLR(fd, &read_fd_set_buffer);
                             read_fd_count--;
                         } else {
                             printf("接收到数据(c_socket = %d): ", fd);
@@ -175,36 +179,30 @@ void tcp_server_socket3(){
             }
 
         }
-        int bit_count = 0;
-        long int *bits = read_fd_set_buffer.__fds_bits;
-        for (int i = 0;; i++) {
-            long int item = bits[i];
-            int item_len = sizeof(long int);
-            for (int j = item_len - 1; j > 0; j--) {
-                item = item >> j;
-                int bit = item & 1;
-                if (bit) {
-                    bit_count++;
-                    fd_max = i * item_len + (item_len - j - 1);
-                    if (bit_count == read_fd_count) {
-                        break;
-                    }
+//        fd_max = get_fd_max(read_fd_set, read_fd_count);
+    }
+
+
+}
+
+int get_fd_max(fd_set fd_set, int fd_count) {
+    fd_set_item_type *bits = fd_set.__fds_bits;
+    int fd_max = 0;
+    int bit_1_count = 0;
+    for (int i = 0;; i++) {
+        fd_set_item_type item = bits[i];
+        int item_len = sizeof(fd_set_item_type) * 8;
+        for (int j = 0; j < item_len; j++) {
+            int move = item >> j;
+            int bit = move & 1;
+            if (bit) {
+                bit_1_count++;
+                fd_max = i * item_len + j;
+                if (bit_1_count == fd_count) {
+                    return fd_max;
                 }
             }
-            if (bit_count == read_fd_count) {
-                break;
-            }
         }
-//        read_fd_set_buffer
-//        FD_ZERO(&read_fd_set);
-//        FD_SET(s_socket, &read_fd_set);
-//        int fd_max = s_socket;
-//        for (int i = 0; i < listen_socket_arr_p->cur_p; i++) {
-//            FD_SET((listen_socket_arr_p->items)[i], &read_fd_set);
-//            if (fd_max < (listen_socket_arr_p->items)[i]) {
-//                fd_max = (listen_socket_arr_p->items)[i];
-//            }
-//        }
-//        leo_array_clean(listen_socket_arr_p);
     }
+    return fd_max;
 }
