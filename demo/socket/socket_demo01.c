@@ -107,8 +107,8 @@ void tcp_server_socket3(){
 
     struct sockaddr_in s_addr;
     s_addr.sin_family = AF_INET;
-    s_addr.sin_addr.s_addr = inet_addr("0.0.0.0");
     s_addr.sin_port = htons(8899);
+    s_addr.sin_addr.s_addr = inet_addr("0.0.0.0");
 
     int bind_r = bind(s_socket, (struct sockaddr *)&s_addr, sizeof(s_addr));
     printf("bind_r = %d\n", bind_r);
