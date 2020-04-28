@@ -17,7 +17,7 @@ struct _leo_array{
 
 typedef struct _leo_array leo_array;
 
-leo_array *leo_array_init();
+leo_array *leo_array_create();
 
 void leo_array_add(leo_array *arr, int item);
 

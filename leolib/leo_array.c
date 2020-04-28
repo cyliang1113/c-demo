@@ -12,7 +12,7 @@ void do_add(leo_array *arr, int item) {
     arr->cur_p = arr->cur_p + 1;
 }
 
-leo_array *leo_array_init() {
+leo_array *leo_array_create() {
     leo_array *arr = (leo_array *) malloc(sizeof(leo_array));;
     arr->items = (int *) malloc(sizeof(int) * leo_array_int_capacity);
     arr->capacity = leo_array_int_capacity;
