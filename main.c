@@ -13,6 +13,11 @@
 
 #include "leolib/leo_array.h"
 
+#include "leolib/leo_buffer.h"
+
+#include <string.h>
+#include <stdlib.h>
+
 
 int main() {
 //    var_demo_fun();

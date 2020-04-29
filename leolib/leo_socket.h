@@ -2,6 +2,8 @@
 // Created by leo on 2020/4/28.
 //
 
+#include "leo_buffer.h"
+
 #ifndef C_BASE_DEMO_LEO_SOCKET_H
 #define C_BASE_DEMO_LEO_SOCKET_H
 
@@ -11,11 +13,7 @@
 
 typedef struct {
     int fd;
-    char *buffer;
-    int capacity;
-    int size;
-    int write_p;
-    int read_p;
+    leo_buffer *buffer;
 } leo_socket;
 
 

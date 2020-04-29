@@ -18,4 +18,6 @@ typedef long int fd_set_item_type;
 
 int get_fd_max(fd_set fd_set, int fd_count);
 
+void tcp_server_socket4();
+
 

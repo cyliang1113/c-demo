@@ -19,4 +19,6 @@ leo_buffer *leo_buffer_create(int buffer_capacity);
 
 int leo_buffer_put(leo_buffer *leo_buffer, char *src, int length);
 
+int leo_buffer_get(leo_buffer *leo_buffer, char *dest, int length);
+
 void leo_buffer_clean(leo_buffer *arr);
