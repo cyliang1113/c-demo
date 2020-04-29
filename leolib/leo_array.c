@@ -27,14 +27,14 @@ void grow(leo_array_list *arr, int times) {
     arr->capacity = new_capacity;
 }
 
-void leo_array_list_add(leo_array_list *arr, leo_array_list_item_type item) {
+void leo_array_list_add(leo_array_list *arr, leo_array_list_item_type *item) {
     if (arr->capacity == arr->cur_p) {
         grow(arr, 1);
     }
     do_add(arr, item);
 }
 
-void leo_array_list_put(leo_array_list *arr, int index, leo_array_list_item_type item) {
+void leo_array_list_put(leo_array_list *arr, int index, leo_array_list_item_type *item) {
     if (index >= arr->capacity) {
         int times = ((index - (arr->capacity)) / leo_array_list_default_capacity) + 1;
         grow(arr, times);

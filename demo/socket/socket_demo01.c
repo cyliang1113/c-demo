@@ -14,8 +14,8 @@
 #include <string.h>
 #include "../../leolib/leo_buffer.h"
 
-#ifndef leo_array_item_type
-    #define leo_array_item_type leo_buffer *
+#ifndef leo_array_list_item_type
+    #define leo_array_list_item_type leo_buffer
 #endif
 #include "../../leolib/leo_array.h"
 
@@ -292,10 +292,14 @@ void tcp_server_socket4(){
                                 printf("%c", buff[i]);
                             }
                             printf("\n");
-                            leo_array_list_item_type * buffer_p = leo_array_list_get(c_socket_buffer_array_list, fd);
+                            leo_array_list_item_type *buffer_p = leo_array_list_get(c_socket_buffer_array_list, fd);
                             if (buffer_p == NULL) {
-                                buffer_p = leo_array_list_create(32);
+                                buffer_p = leo_buffer_create(buff_len);
+                                leo_array_list_put(c_socket_buffer_array_list, fd, buffer_p);
                             }
+                            //
+
+
                         }
                     }
                 }

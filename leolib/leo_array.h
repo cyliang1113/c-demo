@@ -22,9 +22,9 @@ typedef struct{
 
 leo_array_list *leo_array_list_create(int initial_capacity);
 
-void leo_array_list_add(leo_array_list *arr, leo_array_list_item_type item);
+void leo_array_list_add(leo_array_list *arr, leo_array_list_item_type *item);
 
-void leo_array_list_put(leo_array_list *arr, int index, leo_array_list_item_type item);
+void leo_array_list_put(leo_array_list *arr, int index, leo_array_list_item_type *item);
 
 leo_array_list_item_type *leo_array_list_get(leo_array_list *arr, int index);
 
