@@ -12,7 +12,6 @@
 
 void tcp_server_socket();
 void tcp_server_socket2();
-void tcp_server_socket3();
 
 typedef long int fd_set_item_type;
 
