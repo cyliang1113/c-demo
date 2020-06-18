@@ -17,18 +17,17 @@ void *run(void *args) {
 //        *(int *) args = (*(int *) args) + 1;
 //        printf("run count: %d\n", *(int *) args);
         count++;
+
         printf("run count: %d\n", count);
     }
 }
 
 void *run2(void *args) {
-    printf("run2...\n");
-    for (int i = 0; i < 2500; i++) {
-//        *(int *) args = (*(int *) args) + 1;
-//        printf("run2 count: %d\n", *(int *) args);
-        ++count;
-        printf("run2 count: %d\n", count);
-    }
+
+    count = count + 1;
+
+    count--;
+
 }
 
 void create_thread01(){
@@ -39,14 +38,18 @@ void create_thread01(){
     int *count = malloc(sizeof(int));
     *count = 0;
 
-    int r = pthread_create(&thread, NULL, run, (void *)count);
-    printf("pthread_create r: %d\n", r);
-    int r2 = pthread_create(&thread2, NULL, run2, (void *)count);
-    printf("pthread_create r2: %d\n", r2);
-    pthread_join(thread, &r);
-    pthread_join(thread2, &r);
-
-    printf("end\n");
+//    int r = pthread_create(&thread, NULL, run, (void *)count);
+//    printf("pthread_create r: %d\n", r);
+//    int r2 = pthread_create(&thread2, NULL, run2, NULL);
+//    printf("pthread_create r2: %d\n", r2);
+    for (int i = 0; i < 5; i++) {
+        pthread_create(&thread2, NULL, run2, NULL);
+    }
+    pthread_exit(NULL);
+//    pthread_join(thread, &r);
+//    pthread_join(thread2, &r);
+//
+//    printf("end\n");
 }
 
 
