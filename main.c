@@ -16,6 +16,8 @@
 #include "leolib/leo_buffer.h"
 #include "demo/socket/socket_demo02.h"
 
+#include "demo/thread/Demo01.h"
+
 #include <string.h>
 #include <stdlib.h>
 
@@ -40,6 +42,7 @@ int main() {
 //    file_seek_demo();
 //    file_read_demo();
 //    tcp_server_socket2();
-    tcp_server_socket_select();
+//    tcp_server_socket_select();
+    create_thread01();
 }
 
