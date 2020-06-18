@@ -26,6 +26,9 @@ void *run2(void *args) {
 
     int *count = (int *)args;
     *count = (*count) + 1;
+    *count = (*count) + 2;
+    *count = (*count) + 3;
+    *count = (*count) + 4;
     printf("run2 count: %d\n", *count);
 }
 
@@ -41,7 +44,7 @@ void create_thread01(){
 //    printf("pthread_create r: %d\n", r);
 //    int r2 = pthread_create(&thread2, NULL, run2, NULL);
 //    printf("pthread_create r2: %d\n", r2);
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 50; i++) {
         pthread_create(&thread2, NULL, run2, (void *)&count);
     }
     pthread_exit(NULL);
