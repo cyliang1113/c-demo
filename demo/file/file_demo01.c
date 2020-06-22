@@ -3,6 +3,12 @@
 //
 
 #include "file_demo01.h"
+/*
+ * fopne-open
+ * fread-read
+ *
+ *
+ */
 
 void open_file_demo(){
     FILE *p_file = fopen("D:/zzz.txt", "r");

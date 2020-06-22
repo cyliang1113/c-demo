@@ -12,3 +12,5 @@ void struct_def();
 void fun_args_struct();
 
 void struct_arr();
+
+void struct_test01();

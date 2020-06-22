@@ -59,3 +59,19 @@ void struct_arr() {
         printf("%s\n", item.name);
     }
 }
+
+struct struct_man{
+    char *name;
+    int age;
+};
+
+typedef struct struct_man Man;
+
+void struct_test01(){
+    Man man;
+    man.name = "Tom";
+    man.age = 18;
+    printf("man.name: %s\n", man.name);
+    printf("man.age: %d\n", man.age);
+
+}
