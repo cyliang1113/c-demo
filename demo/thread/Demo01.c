@@ -30,14 +30,13 @@ struct p{
 
 void *run2(void *args) {
 
-//    int *count = (int *)args;
-//    *count = (*count) + 1;
-//    printf("run2 count: %d\n", *count);
     struct p *s_p = (struct p *)args;
-//    printf("%d a,", *ii);
-//    printf("%d b,\n", *ii);
+
     printf("(T-%d)111\n", s_p->i);
     printf("(T-%d)222\n", s_p->i);
+
+//    (*(s_p->sum))++;
+//    printf("(T-%d)sum:%d\n", s_p->i, *(s_p->sum));
 }
 
 void create_thread01(){
