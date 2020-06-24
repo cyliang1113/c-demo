@@ -22,36 +22,39 @@ void *run(void *args) {
     }
 }
 
+struct p{
+    int i;
+    int *sum;
+};
+
+
 void *run2(void *args) {
 
-    int *count = (int *)args;
-    *count = (*count) + 1;
-    *count = (*count) + 2;
-    *count = (*count) + 3;
-    *count = (*count) + 4;
-    printf("run2 count: %d\n", *count);
+//    int *count = (int *)args;
+//    *count = (*count) + 1;
+//    printf("run2 count: %d\n", *count);
+    struct p *s_p = (struct p *)args;
+//    printf("%d a,", *ii);
+//    printf("%d b,\n", *ii);
+    printf("(T-%d)111\n", s_p->i);
+    printf("(T-%d)222\n", s_p->i);
 }
 
 void create_thread01(){
-//    printf("1111111111\n");
-    pthread_t thread;
-    pthread_t thread2;
-//    printf("22222222222\n");
 
-    int count = 0;
+    int *sum = malloc(sizeof(int));
+    *sum = 0;
 
-//    int r = pthread_create(&thread, NULL, run, (void *)count);
-//    printf("pthread_create r: %d\n", r);
-//    int r2 = pthread_create(&thread2, NULL, run2, NULL);
-//    printf("pthread_create r2: %d\n", r2);
-    for (int i = 0; i < 50; i++) {
-        pthread_create(&thread2, NULL, run2, (void *)&count);
+    for (int i = 0; i < 30; i++) {
+        struct p *s_p = malloc(sizeof(struct p));
+        s_p->i = i;
+        s_p->sum = sum;
+        pthread_t thread;
+        pthread_create(&thread, NULL, run2, (void *)s_p);
+//        printf("create_r = %d\n", create_r);
     }
     pthread_exit(NULL);
-//    pthread_join(thread, &r);
-//    pthread_join(thread2, &r);
-//
-//    printf("end\n");
+
 }
 
 
