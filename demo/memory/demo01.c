@@ -21,8 +21,10 @@ void memory_addr01(){
     printf("bb addr: %p\n", &bb);
     printf("cc addr: %p\n", &cc);
     printf("dd addr: %p\n", &dd);
-    int *pp1 = malloc(sizeof(int)); //堆
+    void *pp1 = malloc(1); //堆
     printf("pointer pp1: %p\n", pp1);
-    int *pp2 = malloc(sizeof(int)); //堆
+    void *pp2 = malloc(1); //堆
     printf("pointer pp2: %p\n", pp2);
+    void *pp3 = malloc(1); //堆
+    printf("pointer pp3: %p\n", pp3);
 }
