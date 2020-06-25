@@ -17,6 +17,7 @@
 #include "demo/socket/socket_demo02.h"
 
 #include "demo/thread/Demo01.h"
+#include "demo/memory/demo01.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -43,6 +44,11 @@ int main() {
 //    file_read_demo();
 //    tcp_server_socket2();
 //    tcp_server_socket_select();
-    create_thread01();
+//    create_thread01();
+    memory_addr01();
+
+
+
 }
+
 
