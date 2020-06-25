@@ -6,21 +6,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void fun1(){
+void fun1(){ //代码段
 
 }
 
-int aa = 1;
+int aa = 1; //数据段
 
 void memory_addr01(){
-    printf("fun1 addr: %p\n", fun1); //代码段
-    printf("aa addr: %p\n", &aa); //数据段
-    int bb = 1;
-    int cc = 1;
-    static int dd = 1;
-    printf("bb addr: %p\n", &bb); //栈 是倒着的
-    printf("cc addr: %p\n", &cc); //栈
-    printf("dd addr: %p\n", &dd); //数据段
-    int *pp = malloc(sizeof(int));
-    printf("pointer pp: %p\n", pp); //堆
+    printf("fun1 addr: %p\n", fun1);
+    printf("aa addr: %p\n", &aa);
+    int bb = 1; //栈 是倒着的
+    int cc = 1; //栈
+    static int dd = 1; //数据段 和aa在一起
+    printf("bb addr: %p\n", &bb);
+    printf("cc addr: %p\n", &cc);
+    printf("dd addr: %p\n", &dd);
+    int *pp1 = malloc(sizeof(int)); //堆
+    printf("pointer pp1: %p\n", pp1);
+    int *pp2 = malloc(sizeof(int)); //堆
+    printf("pointer pp2: %p\n", pp2);
 }

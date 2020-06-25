@@ -198,7 +198,12 @@ void tcp_server_socket3(){
 }
 
 int get_fd_max(fd_set fd_set, int fd_count) {
-    fd_set_item_type *bits = fd_set.fds_bits;
+    #ifdef __USE_XOPEN
+        fd_set_item_type *bits = fd_set.fds_bits;
+    #else
+        fd_set_item_type *bits = fd_set.__fds_bits;
+    #endif
+
     int fd_max = 0;
     int bit_1_count = 0;
     for (int i = 0;; i++) {
