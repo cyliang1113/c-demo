@@ -45,8 +45,8 @@ int main() {
 //    tcp_server_socket2();
 //    tcp_server_socket_select();
 //    create_thread01();
-    memory_addr01();
-
+//    memory_addr01();
+    struct_test02();
 
 
 }

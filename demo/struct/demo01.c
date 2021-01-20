@@ -75,3 +75,21 @@ void struct_test01(){
     printf("man.age: %d\n", man.age);
 
 }
+
+void struct_test02(){
+    Man man;
+    man.name = "Tom";
+    man.age = 18;
+    printf("man.name: %s\n", man.name);
+    printf("man.age: %d\n", man.age);
+    printf("man add: %p\n", &man);
+    printf("man.name add: %p\n", &(man.name));
+    printf("man.age add: %p\n", &(man.age));
+
+    Man man1 = man;
+    printf("man1.name: %s\n", man.name);
+    printf("man1.age: %d\n", man.age);
+    printf("man1: %p\n", &man1);
+    printf("man1.name add: %p\n", &(man1.name));
+    printf("man1.age add: %p\n", &(man1.age));
+}
