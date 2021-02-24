@@ -18,6 +18,7 @@
 
 #include "demo/thread/Demo01.h"
 #include "demo/memory/demo01.h"
+#include "demo/asm//asm.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -46,9 +47,8 @@ int main() {
 //    tcp_server_socket_select();
 //    create_thread01();
 //    memory_addr01();
-    struct_test02();
-
-
+//    struct_test02();
+    asm_test1();
 }
 
 
