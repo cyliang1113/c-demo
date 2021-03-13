@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include <wait.h>
 
-void create(){
+void process_create(){
     printf("create pid: %d\n", getpid());
     int child;
     if (!(child = fork())) {

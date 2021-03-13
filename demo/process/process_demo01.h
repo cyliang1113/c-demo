@@ -7,4 +7,4 @@
 
 #endif //C_BASE_DEMO_PROCESS_DEMO01_H
 
-void create();
+void process_create();

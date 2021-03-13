@@ -20,6 +20,7 @@
 #include "demo/memory/demo01.h"
 #include "demo/asm/asm.h"
 #include "demo/define/define_demo01.h"
+#include "demo/process/process_demo01.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -50,7 +51,9 @@ int main() {
 //    memory_addr01();
 //    struct_test02();
 //    asm_test1();
-    define_test1();
+//    define_test1();
+    process_create();
+    return 0;
 }
 
 
