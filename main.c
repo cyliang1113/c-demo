@@ -20,6 +20,7 @@
 #include "demo/memory/demo01.h"
 #include "demo/asm/asm.h"
 #include "demo/define/define_demo01.h"
+#include "demo/process/process_demo01.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -57,6 +58,5 @@ int main() {
     asm_test2();
     printf("");
 }
-
 
 

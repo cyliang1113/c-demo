@@ -7,6 +7,10 @@
 
 #endif //C_BASE_DEMO_DEMO01_H
 
+void array_string_demo();
+
+void string_demo();
+
 void string_len();
 
 void string_cat();
