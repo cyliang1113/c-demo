@@ -23,6 +23,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 
 int main() {
@@ -50,7 +51,12 @@ int main() {
 //    memory_addr01();
 //    struct_test02();
 //    asm_test1();
-    define_test1();
+//    define_test1();
+//    int pid = getpid();
+//    printf("1");
+    asm_test2();
+    printf("");
 }
+
 
 

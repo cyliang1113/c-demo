@@ -9,3 +9,6 @@
 
 
 void asm_test1();
+
+
+void asm_test2();

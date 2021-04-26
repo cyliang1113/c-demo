@@ -10,16 +10,25 @@ void asm_test1() {
     int a = 10;
     int r ;
     asm(
-//            "movl %1, %0 \n"
-//            :"=r"(r)
-//            :"r"(a)
+            "movl %1, %0 \n"
+            "addl $1, %0 \n"
+            :"=r"(r)
+            :"r"(a)
 
-            "movl %%eax, %%ebx \n"
-            "addl %%eax, %%ebx "
-            :"=b"(r)
-            :"a"(a)
+//            "movl %%eax, %%ebx \n"
+//            "addl %%eax, %%ebx "
+//            :"=b"(r)
+//            :"a"(a)
 
             );
     printf("the result is %d\n", r);
     return;
+}
+
+void asm_test2() {
+    __asm__(
+            "syscall \n"
+            :
+            :
+            );
 }
