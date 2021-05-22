@@ -93,3 +93,22 @@ void struct_test02(){
     printf("man1.name add: %p\n", &(man1.name));
     printf("man1.age add: %p\n", &(man1.age));
 }
+
+void struct_test03(){
+    struct struct_man m1;
+    printf("man add: %p\n", &m1);
+    printf("man.name add: %p\n", &m1.name);
+    printf("man.name: %s\n", m1.name);
+    printf("man.age add: %p\n", &m1.age);
+    printf("man.age: %d\n", m1.age);
+
+    m1.age = 18;
+    m1.name = "xixi";
+    printf("man add: %p\n", &m1);
+    printf("man.name add: %p\n", &m1.name);
+    printf("man.name: %s\n", m1.name);
+    printf("man.age add: %p\n", &m1.age);
+    printf("man.age: %d\n", m1.age);
+
+    printf("man.name size: %d\n", sizeof(m1.name));
+}

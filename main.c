@@ -55,8 +55,8 @@ int main() {
 //    define_test1();
 //    int pid = getpid();
 //    printf("1");
-    asm_test2();
-    printf("");
+//    asm_test2();
+    struct_test03();
 }
 
 
