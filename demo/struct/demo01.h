@@ -15,4 +15,6 @@ void struct_arr();
 
 void struct_test01();
 void struct_test02();
+
 void struct_test03();
+void struct_test04();

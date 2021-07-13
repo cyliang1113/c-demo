@@ -112,3 +112,13 @@ void struct_test03(){
 
     printf("man.name size: %d\n", sizeof(m1.name));
 }
+
+void struct_test04(){
+    Man man = {"Jack", 34};
+    printf("man addr: %p\n", &man);
+    printf("man.age addr: %p\n", &man.age);
+
+    long p = &(((Man *) 0)->age);
+    printf("相对位置: %d\n", p);
+    printf("man addr 计算: %p\n", ((char *)&man.age) - p);
+}

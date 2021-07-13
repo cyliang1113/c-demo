@@ -56,7 +56,9 @@ int main() {
 //    int pid = getpid();
 //    printf("1");
 //    asm_test2();
-    struct_test03();
+//    printf("111");
+//    return 0;
+    struct_test04();
 }
 
 
