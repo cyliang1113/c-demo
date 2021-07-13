@@ -118,6 +118,7 @@ void struct_test04(){
     printf("man addr: %p\n", &man);
     printf("man.age addr: %p\n", &man.age);
 
+    //根据man.age的地址计算出man的地址
     long p = &(((Man *) 0)->age);
     printf("相对位置: %d\n", p);
     printf("man addr 计算: %p\n", ((char *)&man.age) - p);
